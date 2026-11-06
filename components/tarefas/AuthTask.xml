@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="AuthTask" extends="Task">
+  <interface>
+    <field id="op" type="string" />
+    <field id="ctx" type="assocarray" />
+    <field id="result" type="assocarray" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/lib/Util.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Http.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Store.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Xtream.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/M3U.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Licenca.brs" />
+  <script type="text/brightscript" uri="pkg:/components/tarefas/AuthTask.brs" />
+</component>

@@ -1,0 +1,15 @@
+{
+  "versao": "1.3.9",
+  "suporte": "leandro_gracas@yahoo.com.br",
+  "gateway": "https://tv.vltvplay.tech",
+  "licenca": "https://api.vltvplay.tech",
+  "parceiro": "https://api.vltvplay.tech/parceiro/resolver",
+  "vps": "https://tv.vltvplay.tech",
+  "vpsKey": "__VPS_APP_KEY__",
+  "tmdbKey": "__TMDB_API_KEY__",
+  "imagens": "https://cdn.vltvplay.tech",
+  "avisoDias": 7,
+  "debug_teclas": false,
+  "rokuProdAnual": "vltv_anual",
+  "rokuProdVitalicio": "vltv_vitalicio"
+}

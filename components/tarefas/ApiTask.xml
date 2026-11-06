@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ApiTask" extends="Task">
+  <interface>
+    <field id="op" type="string" />
+    <field id="params" type="assocarray" />
+    <field id="result" type="assocarray" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/lib/Util.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Http.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Store.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Xtream.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/M3U.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Epg.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/I18n.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Titulo.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Parental.brs" />
+  <script type="text/brightscript" uri="pkg:/components/tarefas/ApiTask.brs" />
+</component>

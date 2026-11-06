@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="CardItem" extends="Group">
+  <interface>
+    <field id="itemContent" type="node" onChange="mudou" />
+    <field id="width" type="float" />
+    <field id="height" type="float" />
+    <field id="itemHasFocus" type="boolean" onChange="focou" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/itens/CardItem.brs" />
+  <children>
+    <Rectangle id="borda" translation="[0,0]" width="236" height="352" color="0xE50914FF" visible="false" />
+    <Rectangle id="base" translation="[4,4]" width="228" height="344" color="0x1E1E22FF" />
+    <Label id="semCapa" translation="[12,120]" width="212" height="120" horizAlign="center" vertAlign="center" wrap="true" font="font:SmallSystemFont" color="0x9C9CA8FF" />
+    <Poster id="capa" translation="[4,4]" width="228" height="344" loadDisplayMode="scaleToZoom" />
+    <Rectangle id="faixaNota" translation="[4,4]" width="76" height="34" color="0x000000B0" visible="false" />
+    <Label id="nota" translation="[10,6]" width="68" height="30" font="font:SmallBoldSystemFont" color="0xFFD166FF" />
+    <Label id="nome" translation="[0,358]" width="236" height="64" wrap="true" maxLines="2" font="font:SmallSystemFont" color="0xF5F5F7FF" />
+  </children>
+</component>

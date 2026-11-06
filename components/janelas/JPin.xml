@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="JPin" extends="Group">
+  <interface>
+    <field id="args" type="assocarray" />
+    <field id="resultado" type="assocarray" alwaysNotify="true" />
+    <function name="iniciar" />
+    <function name="focar" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/lib/Util.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Store.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/I18n.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Parental.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Ui.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Vk.brs" />
+  <script type="text/brightscript" uri="pkg:/components/janelas/JPin.brs" />
+</component>

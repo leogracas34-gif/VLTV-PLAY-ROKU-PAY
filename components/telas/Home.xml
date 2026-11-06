@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="Home" extends="Group">
+  <interface>
+    <field id="args" type="assocarray" />
+    <field id="acao" type="assocarray" alwaysNotify="true" />
+    <field id="novoVisual" type="boolean" alwaysNotify="true" onChange="aplicarVisual" />
+    <function name="iniciar" />
+    <function name="retomar" />
+    <function name="encerrar" />
+    <function name="focar" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/lib/Util.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Http.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Store.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/I18n.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Ui.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Titulo.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/Licenca.brs" />
+  <script type="text/brightscript" uri="pkg:/components/telas/Home.brs" />
+</component>
