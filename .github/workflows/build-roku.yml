@@ -1,0 +1,66 @@
+name: Gerar VLTV Play Roku
+
+# Fica em .github/workflows/build-roku.yml (raiz do repositório).
+# Dispara sozinho em qualquer push que não seja só do LG/Samsung, e também pelo botão "Run workflow".
+# Acha sozinho a pasta do projeto Roku (a que tem o arquivo "manifest"), qualquer que seja o nome dela.
+
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+      - 'webos/**'
+      - 'tizen/**'
+      - 'vps-parceiros/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Achar a pasta do projeto Roku
+        run: |
+          M=$(grep -rl --include=manifest -m1 '^title=VLTV Play' . 2>/dev/null | head -1)
+          [ -n "$M" ] || M=$(find . -name manifest -not -path './.git/*' | head -1)
+          [ -n "$M" ] || { echo "ERRO: não achei nenhum arquivo manifest no repositório."; exit 1; }
+          PASTA=$(dirname "$M")
+          echo "Pasta do projeto Roku: $PASTA"
+          echo "PASTA=$PASTA" >> "$GITHUB_ENV"
+          ls -la "$PASTA"
+
+      - name: Colocar as chaves (Secrets TMDB_API_KEY e VPS_APP_KEY)
+        env:
+          TMDB: ${{ secrets.TMDB_API_KEY }}
+          VPS: ${{ secrets.VPS_APP_KEY }}
+        run: |
+          cd "$PASTA"
+          python3 - <<'PY'
+          import os, json
+          c = json.load(open('config.json'))
+          tmdb = ''.join(os.environ.get('TMDB', '').split()).strip('"\'')
+          vps = os.environ.get('VPS', '').strip()
+          if tmdb: c['tmdbKey'] = tmdb
+          else: print('::warning::TMDB_API_KEY vazio: o app funciona, só sem logos e sinopses do TMDB.')
+          if vps: c['vpsKey'] = vps
+          else: print('::warning::VPS_APP_KEY vazio: o app funciona, mas não envia créditos aprendidos.')
+          json.dump(c, open('config.json', 'w'), ensure_ascii=False, indent=2)
+          PY
+
+      - name: Conferir o código (BrighterScript)
+        run: |
+          cd "$PASTA"
+          npm i -g brighterscript@0.69.7
+          bsc --rootDir . --createPackage false --stagingDir /tmp/stage --files "manifest" "source/**/*" "components/**/*" "images/**/*" "config.json" "i18n_en.json"
+
+      - name: Montar o zip (manifest na raiz do zip)
+        run: |
+          cd "$PASTA"
+          zip -qr "$GITHUB_WORKSPACE/VLTV-Roku-app.zip" manifest source components images config.json i18n_en.json
+          unzip -l "$GITHUB_WORKSPACE/VLTV-Roku-app.zip" | tail -3
+
+      - name: Guardar o zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: VLTV-Roku-app
+          path: VLTV-Roku-app.zip
